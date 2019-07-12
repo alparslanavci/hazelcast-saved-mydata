@@ -1,0 +1,79 @@
+@import "mytheme.scss";
+@import "addons.scss";
+
+// This file prefixes all rules with the theme name to avoid causing conflicts with other themes.
+// The actual styles should be defined in mytheme.scss
+
+.mytheme {
+  @include addons;
+  @include mytheme;
+
+}
+
+.background-red {
+	background-color: red;
+}
+
+.member-internal-spacing {
+	padding-left: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-right: 10px;
+}
+
+.member-padding {
+	padding-left: 1px;
+	padding-right: 1px;
+	padding-top: 1px;
+	padding-bottom: 1px;
+}
+
+.background-dark-blue {
+	background-color: #0d2a35;
+}
+
+.background-greenA200 {
+	background-color: #69F0AE;
+}
+
+.partitions-backup-border {
+    border: 1px solid white;
+    border-radius: 5px;
+}
+
+.text-alignment-center {
+    text-align: center;
+}
+
+.color-white{
+    color: white;
+}
+
+.v-icon{
+    color: white;
+    font-size: 20px;
+}
+
+.button-icon .v-icon{
+    color: black;
+}
+
+.font-20px{
+    font-size: 20px;
+}
+
+.font-bold{
+    font-weight: bold;
+}
+
+.mytheme .v-margin-top {
+    padding-top: 10px;
+}
+
+.button-caption-margin .v-button-wrap {
+    margin-left: -4px;
+}
+
+.title-padding-bottom {
+    padding-bottom: 1px;
+}
