@@ -166,9 +166,12 @@ public class MyUI
             }
         });
 
+        HazelcastInstance client = HazelcastClient.newHazelcastClient();
+        IMap myMap = client.getMap("myMap");
+
         long x = 0;
         for (int i = 1; i < threads; i++) {
-            executorService.submit(new HazelcastTask(keys, x));
+            executorService.submit(new HazelcastTask(keys, x, myMap));
             x += 10000000;
         }
 
@@ -178,15 +181,15 @@ public class MyUI
             implements Callable<Boolean> {
         private ConcurrentHashMap<String, String> keys;
         private long i;
+        private IMap<Object, Object> myMap;
 
-        public HazelcastTask(ConcurrentHashMap<String, String> keys, long i) {
+        public HazelcastTask(ConcurrentHashMap<String, String> keys, long i, IMap myMap) {
             this.keys = keys;
             this.i = i;
+            this.myMap = myMap;
         }
 
         public Boolean call() {
-            HazelcastInstance client = HazelcastClient.newHazelcastClient();
-            IMap<Object, Object> myMap = client.getMap("myMap");
             long threshold = i + 8;
 
             while (true) {
